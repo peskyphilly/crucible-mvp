@@ -1,0 +1,18 @@
+{
+  "id": "CORPSE_01_NATIONWIDE",
+  "institution": "Nationwide Building Society",
+  "fine_amount": "£264,800,000",
+  "year": 2024,
+  "failure_pattern": "FP-01: Filter Replaces Judgment",
+  "title": "Nationwide Building Society - High-Risk Customer Monitoring Failure",
+  "scenario": "A customer profile has been flagged by your transaction monitoring system:\n\nCUSTOMER DETAILS:\n- Account opened: 14 months ago\n- Customer type: PEP (Politically Exposed Person) - Foreign government official\n- Country of origin: High-risk jurisdiction\n- Account activity: £2.3M deposited over 12 months from multiple foreign sources\n\nRECENT ACTIVITY:\n- Last 30 days: £450K in deposits from 8 different overseas entities\n- Transaction pattern: Rapid deposits followed by immediate wire transfers to third parties\n- Enhanced Due Diligence (EDD): Last conducted 11 months ago at account opening\n- Customer contact: No response to last 2 outreach attempts\n\nYOUR POLICY STATES:\n- PEP accounts require EDD refresh every 12 months\n- High-risk jurisdictions require EDD refresh every 6 months\n- Current account age: 14 months (outside both windows)\n\nSYSTEM RECOMMENDATION:\n\"No immediate action required - account activity consistent with customer profile established at onboarding\"\n\nQUESTION:\nDo you escalate this case for immediate review, or do you accept the system recommendation?",
+  "fca_criticism": "From FCA Final Notice (Nationwide Building Society, 2024):\n\n\"The Firm's monitoring failed to identify that enhanced due diligence had not been conducted within required timeframes. Analysts relied on system-generated risk ratings without independent assessment of whether the underlying due diligence was current.\n\nThe Firm's rationales frequently stated 'per policy, EDD refresh not yet required' without recognizing that multiple policy requirements had been breached.\n\nThis represented a systemic failure to exercise independent judgment in the face of obvious red flags. The filter (12-month EDD refresh) became a ceiling rather than a floor, and analysts stopped interrogating risk.\"",
+  "correct_approach": "Escalate immediately - multiple policy breaches (14mo since EDD, high-risk jurisdiction 6mo requirement breached, unresponsive customer) override system recommendation",
+  "keywords_that_killed_them": [
+    "per policy",
+    "not yet required",
+    "consistent with profile",
+    "no immediate action required",
+    "system recommendation"
+  ]
+}

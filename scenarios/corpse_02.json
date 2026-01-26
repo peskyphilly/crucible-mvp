@@ -1,0 +1,18 @@
+{
+  "id": "CORPSE_02_BARCLAYS",
+  "institution": "Barclays Bank",
+  "fine_amount": "72,000,000",
+  "year": 2015,
+  "failure_pattern": "FP-01: Filter Replaces Judgment",
+  "title": "Barclays Bank - High-Value Transaction Monitoring Failure",
+  "scenario": "A high-net-worth client has triggered multiple transaction monitoring alerts:\n\nCLIENT DETAILS:\n- Account relationship: 3 years\n- Client type: Corporate entity (overseas shell company)\n- Beneficial ownership: Unclear (multiple layers of holding companies)\n- Business nature: Stated as 'International consulting'\n\nRECENT ALERT HISTORY:\n- Last 90 days: 12 transaction alerts (high-value wire transfers)\n- Pattern: Rapid movement of funds through account (in and out within 48 hours)\n- Destinations: Multiple high-risk jurisdictions\n- Total value: £4.2M moved in 90 days\n\nCUSTOMER DUE DILIGENCE STATUS:\n- Last CDD refresh: 18 months ago\n- Beneficial ownership documentation: Incomplete\n- Source of wealth: 'Consulting fees' (no supporting documentation)\n\nYOUR POLICY STATES:\n- CDD must be refreshed annually for corporate clients\n- High-risk jurisdictions require enhanced scrutiny\n- Multiple alerts within 90 days should trigger review\n\nSYSTEM RECOMMENDATION:\n'Alerts within normal threshold for client risk profile. No immediate escalation required.'\n\nQUESTION:\nDo you escalate for immediate investigation, or do you accept the system assessment?",
+  "fca_criticism": "From FCA Final Notice (Barclays Bank, 2015):\n\n'The Firm failed to conduct adequate due diligence on high-risk customers and failed to monitor ongoing business relationships adequately. Staff relied on the fact that the automated systems had not generated alerts requiring immediate action.\n\nAnalysts frequently stated that transactions were 'in line with standard practice' or 'below threshold for escalation' without conducting independent assessment of the cumulative risk profile.\n\nThe Firm's approach meant that judgments about risk were outsourced to automated systems, and analysts did not exercise appropriate professional skepticism when systems indicated no action was required.'",
+  "correct_approach": "Escalate immediately - multiple policy breaches (CDD 18mo overdue, beneficial ownership unclear, 12 alerts in 90 days, high-risk jurisdictions) indicate systemic control failure regardless of system threshold assessment",
+  "keywords_that_killed_them": [
+    "in line with standard practice",
+    "below threshold",
+    "no immediate escalation required",
+    "normal threshold",
+    "system recommendation"
+  ]
+}

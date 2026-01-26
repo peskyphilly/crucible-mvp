@@ -1,0 +1,18 @@
+{
+  "id": "CORPSE_03_MAKO",
+  "institution": "Mako Global Derivatives",
+  "fine_amount": "1,890,000",
+  "year": 2023,
+  "failure_pattern": "FP-01: Filter Replaces Judgment",
+  "title": "Mako Global Derivatives - Client Onboarding Failure",
+  "scenario": "A new corporate client is applying for a trading account:\n\nCLIENT PROFILE:\n- Entity type: Offshore special purpose vehicle (SPV)\n- Jurisdiction: British Virgin Islands\n- Stated business purpose: 'Commodity derivatives trading'\n- Ultimate beneficial owner: Identified as foreign national from sanctioned-adjacent jurisdiction\n- Proposed trading volume: £50M annual notional value\n\nDUE DILIGENCE FINDINGS:\n- Corporate structure: Complex (3 layers of holding companies)\n- Source of funds: 'Investment capital from institutional sources' (limited documentation)\n- Business rationale: States they need UK access for European commodity markets\n- References provided: Two other offshore entities (no verified third-party references)\n\nRED FLAGS NOTED:\n- UBO nationality raises sanctions proximity concerns\n- Business model unclear (why SPV structure for simple trading?)\n- Limited documentation on source of wealth\n- Offshore jurisdiction with weak AML controls\n\nYOUR POLICY STATES:\n- Offshore SPVs require enhanced due diligence\n- Sanctions-adjacent jurisdictions require MLRO approval\n- Business rationale must be clearly documented and verified\n\nSYSTEM RISK RATING:\n'Medium Risk - Standard EDD package completed. No specific sanctions matches. Proceed with onboarding.'\n\nQUESTION:\nDo you approve onboarding based on the completed EDD package, or do you escalate for additional review?",
+  "fca_criticism": "From FCA Final Notice (Mako Global Derivatives, 2023):\n\n'The Firm onboarded high-risk clients without adequate consideration of red flags that were present at the outset. Analysts relied on the completion of the Enhanced Due Diligence checklist without exercising judgment about whether the information obtained actually mitigated the identified risks.\n\nRationales frequently cited that 'EDD requirements have been met' or that 'no sanctions matches were identified' without addressing the substantive concerns about beneficial ownership, business rationale, or sanctions proximity.\n\nThe Firm treated the completion of procedural steps as sufficient, without independent assessment of whether those steps had actually resolved the underlying risk concerns.'",
+  "correct_approach": "Escalate to MLRO - multiple unresolved concerns (UBO sanctions proximity, unclear business model, weak documentation, offshore structure) require senior review regardless of system risk rating or EDD checklist completion",
+  "keywords_that_killed_them": [
+    "EDD requirements have been met",
+    "no sanctions matches",
+    "standard EDD package completed",
+    "proceed with onboarding",
+    "per policy"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "id": "CORPSE_04_COINBASE",
+  "institution": "Coinbase Europe",
+  "fine_amount": "3,500,000",
+  "year": 2024,
+  "failure_pattern": "FP-01: Filter Replaces Judgment",
+  "title": "Coinbase Europe - High-Risk Jurisdiction Monitoring Failure",
+  "scenario": "A retail customer has been flagged for review after automated monitoring detected unusual activity:\n\nCUSTOMER DETAILS:\n- Account age: 8 months\n- Customer type: Individual retail customer\n- Stated occupation: 'Freelance software developer'\n- Account verification: Standard KYC completed at onboarding\n\nTRANSACTION PATTERN DETECTED:\n- Last 60 days: £180,000 in cryptocurrency purchases\n- Funding source: Multiple small bank transfers (£2,000-£5,000 each) from 4 different bank accounts\n- Withdrawal pattern: Immediate transfer to external wallets after purchase\n- Wallet destinations: 15 different wallets, several traced to high-risk jurisdiction exchanges\n\nCUSTOMER ENGAGEMENT:\n- Contacted for source of funds verification\n- Response: 'Earnings from various freelance projects'\n- Documentation provided: None (customer states 'paid in cash for most projects')\n- Follow-up: Customer has not responded to second request for documentation\n\nYOUR POLICY STATES:\n- Customers must provide source of funds documentation for transactions >£10,000\n- High-risk jurisdiction transfers require enhanced monitoring\n- Non-responsive customers should be reviewed for account restrictions\n\nSYSTEM RECOMMENDATION:\n'Transaction value per deposit below reporting threshold. Standard retail risk profile. Continue monitoring.'\n\nQUESTION:\nDo you continue standard monitoring as recommended, or do you escalate for immediate review and potential account restriction?",
+  "fca_criticism": "From FCA Final Notice (Coinbase Europe, 2024):\n\n'The Firm's monitoring systems focused on individual transaction values rather than cumulative risk patterns. Analysts accepted system assessments that individual transactions were below thresholds without considering the aggregate picture.\n\nRationales frequently stated that transactions were 'below reporting threshold' or 'consistent with retail profile' without independent consideration of the pattern of activity, the customer's inability to verify source of funds, or the high-risk jurisdictions involved.\n\nThe Firm's approach resulted in judgments being outsourced to transaction-level filters, and analysts did not exercise appropriate skepticism when presented with obvious risk indicators that fell outside the automated system's detection logic.'",
+  "correct_approach": "Escalate immediately and restrict account - customer unable to verify source of funds, non-responsive to requests, high-risk jurisdiction exposure, and structuring-like behavior (multiple small transfers) override system threshold assessment",
+  "keywords_that_killed_them": [
+    "below reporting threshold",
+    "standard retail risk profile",
+    "continue monitoring",
+    "per deposit",
+    "system recommendation"
+  ]
+}

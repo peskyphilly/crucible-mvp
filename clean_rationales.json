@@ -1,0 +1,26 @@
+{
+  "description": "Clean rationales that should NOT be flagged by FP-01 detection. These demonstrate independent judgment and risk-based analysis without filter-deference language.",
+  "test_cases": [
+    {
+      "id": "CLEAN_01",
+      "scenario": "CORPSE_01_NATIONWIDE",
+      "rationale_type": "Independent judgment with policy awareness",
+      "rationale": "The customer's account shows concerning patterns that require immediate attention:\n\n1. The EDD is 14 months overdue, exceeding both the 12-month PEP requirement and the 6-month high-risk jurisdiction requirement. This is a clear breach of multiple policy requirements.\n\n2. The customer has been unresponsive to two outreach attempts, which is itself a red flag for potential account takeover or money laundering.\n\n3. The transaction pattern (rapid in-and-out movements of £450K to third parties) does not align with the stated legitimate business purpose established at onboarding.\n\nDespite the system indicating no immediate action is needed, I am escalating this case because the cumulative risk factors - outdated due diligence, unresponsive customer, and suspicious transaction patterns - present material money laundering risk that cannot be ignored.\n\nThe policy framework provides minimum standards, but professional judgment requires escalation when multiple risk indicators converge, even if individual elements might appear within technical compliance boundaries. The combination of factors here creates unacceptable exposure.",
+      "expected_result": "NOT_FLAGGED",
+      "reason": "Demonstrates independent judgment, acknowledges but does not defer to system recommendation, provides risk-based analysis"
+    },
+    {
+      "id": "CLEAN_02",
+      "scenario": "CORPSE_02_BARCLAYS",
+      "rationale_type": "Comprehensive risk analysis",
+      "rationale": "I have reviewed this high-value transaction monitoring alert and identified several concerning factors:\n\nFirst, the beneficial ownership structure remains unclear after 18 months of relationship, which is unacceptable for a corporate relationship of this size and risk profile. We cannot adequately assess risk without understanding who ultimately controls this entity.\n\nSecond, the frequency of alerts (12 in 90 days) suggests either a failure in our initial risk assessment or a material change in the customer's behavior that we have not adequately understood. Either scenario requires investigation.\n\nThird, the movement of £4.2M through rapid in-out transactions to high-risk jurisdictions is inconsistent with the stated 'international consulting' business model, which should show more stable, predictable payment patterns for legitimate advisory services.\n\nWhile our automated systems have not triggered an immediate escalation flag, my assessment is that we are missing critical information about this relationship. The combination of unclear ownership, alert frequency, transaction velocity, and high-risk jurisdictions creates an unacceptable risk exposure.\n\nI am escalating for immediate investigation and proposing we suspend further activity until we can verify the source of funds and clarify the beneficial ownership structure. This is a judgment call based on the totality of circumstances, not a mechanical application of alert thresholds. The CDD breach alone (18 months overdue) would justify escalation, but the broader pattern of concern makes this urgent.",
+      "expected_result": "NOT_FLAGGED",
+      "reason": "Shows comprehensive risk assessment, identifies multiple independent concerns, makes judgment call despite system assessment"
+    }
+  ],
+  "usage_instructions": {
+    "purpose": "Use these rationales to verify the detection engine does not produce false positives",
+    "testing": "Submit each rationale through the detection engine and verify NO flags are generated",
+    "validation": "QA heads should review these examples to confirm they represent 'clean' judgment-based reasoning"
+  }
+}
