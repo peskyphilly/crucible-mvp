@@ -72,7 +72,7 @@ if not scenarios:
 # Scenario Selection
 # ═══════════════════════════════════════════
 
-st.markdown("### 📋 Select Scenario")
+st.markdown("###  Select Scenario")
 
 scenario_options = {
     f"{data['institution']} (£{data['fine_amount']})": scenario_id 
@@ -137,9 +137,32 @@ if st.session_state.analysis_complete and st.session_state.detection_result:
     st.markdown("---")
     st.markdown("### Analysis Results")
     
+    # Add disclaimer
+    st.caption("Note: Currently set to flag conservatively. Some valid rationales may be flagged for review.")
+    
     result = st.session_state.detection_result
     
     if result['flagged']:
+        # Show why it was flagged
+        st.markdown("#### Why this was flagged")
+        
+        # Map internal detection types to plain English
+        module_labels = {
+            'EXPLICIT_FILTER_DEFERENCE': 'The analyst deferred to system recommendations',
+            'EUPHEMIZED_AUTOMATION': 'The analyst used procedural language to avoid judgment',
+            'POLICY_INVERSION': 'Policy compliance was used to justify inaction',
+            'DISTRIBUTIVE_WARRANT': 'The analyst used threshold arithmetic to ignore the total',
+            'AGGREGATE_BLINDNESS': 'Individual amounts were analyzed without considering the aggregate'
+        }
+        
+        # Display triggered modules in plain English
+        flagged_modules = result.get('flagged_modules', [])
+        for module in flagged_modules:
+            plain_text = module_labels.get(module, module)
+            st.warning(f"{plain_text}")
+        
+        st.markdown("---")
+        
         # Flag detected - use Streamlit error box
         explanation = generate_flag_explanation(result, scenario['institution'])
         st.error(explanation)
@@ -148,96 +171,18 @@ if st.session_state.analysis_complete and st.session_state.detection_result:
         st.markdown("### ⚖️ Regulatory Comparison")
         st.markdown("**FCA enforcement finding in this case:**")
         st.warning(scenario['fca_criticism'])
+
+         # Show correct approach
+        st.markdown("### Post-Incident FCA Interpretation")
+        st.info(f"**FCA's position:** {scenario['correct_approach']}")
         
     else:
         # No flag - use Streamlit success box
         st.success(f"✅ No filter-deference detected.\n\nYour rationale demonstrates independent judgment and does not rely on system filters or policy proxies.")
     
-    # Show correct approach for reference only
-    st.markdown("### 📖 Post-Incident FCA Interpretation (For Comparison)")
-    st.info(f"**FCA's position:** {scenario['correct_approach']}")
-    
     # Reset button
-    if st.button("🔄 Analyze Another Scenario"):
+    if st.button("Analyze Another Scenario"):
         st.session_state.analysis_complete = False
         st.session_state.detection_result = None
         st.rerun()
 
-# ═══════════════════════════════════════════
-# Audit Export
-# ═══════════════════════════════════════════
-
-st.markdown("---")
-st.markdown("### 📥 Audit Trail Export")
-
-col1, col2 = st.columns(2)
-
-with col1:
-    if st.button("📊 Export Audit Trail (CSV)"):
-        csv_data = export_to_csv()
-        st.download_button(
-            label="Download CSV",
-            data=csv_data,
-            file_name="crucible_audit_log.csv",
-            mime="text/csv"
-        )
-
-# ═══════════════════════════════════════════
-# Validation Session Form
-# ═══════════════════════════════════════════
-
-st.markdown("---")
-st.markdown("## 🎯 QA Validation Session")
-st.markdown("*Complete this after reviewing all scenarios with QA head*")
-
-with st.expander("Validation Sign-Off Form"):
-    qa_head_name = st.text_input(
-        "QA Head Name/ID",
-        placeholder="e.g., John Smith - Senior AML Analyst"
-    )
-    
-    st.markdown("**Validation Questions:**")
-    
-    q1 = st.radio(
-        "Does FP-01 detection flag the failure mode across all reviewed scenarios?",
-        ["Yes", "No"],
-        key="q1"
-    )
-    
-    q2 = st.radio(
-        "Did the engine avoid false positives on clean rationales?",
-        ["Yes", "No"],
-        key="q2"
-    )
-    
-    q3 = st.radio(
-        "Would you recommend this mechanism for pilot testing in a production environment?",
-        ["Yes", "No"],
-        key="q3"
-    )
-    
-    additional_notes = st.text_area(
-        "Additional Notes (optional)",
-        placeholder="Any observations, concerns, or recommendations...",
-        height=100
-    )
-    
-    if st.button("✅ Submit Validation"):
-        if qa_head_name.strip():
-            # Log validation session
-            log_validation_session(
-                qa_head_id=qa_head_name,
-                scenarios_reviewed=list(scenarios.keys()),
-                validation_responses={
-                    "flags_failure_mode": q1 == "Yes",
-                    "avoids_false_positives": q2 == "Yes",
-                    "recommend_pilot": q3 == "Yes"
-                },
-                additional_notes=additional_notes,
-                positive_cases=len(scenarios),
-                negative_cases=2  # Based on clean_rationales.json
-            )
-            st.success("✅ Validation session logged successfully. Thank you for your feedback!")
-            st.balloons()
-        else:
-            st.warning("⚠️ Please enter QA Head name/ID before submitting.")
